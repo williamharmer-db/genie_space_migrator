@@ -36,7 +36,7 @@ You can provide credentials in two ways:
 
 1. **Copy the example file:**
    ```bash
-   cp .env.example .env
+   cp .example.env .env
    ```
 
 2. **Edit `.env` with your actual credentials:**
