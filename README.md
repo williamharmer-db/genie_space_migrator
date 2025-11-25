@@ -304,5 +304,5 @@ This script uses the following Databricks Genie APIs:
 
 ## License
 
-This is utility script is provided for use with Databricks workspaces inside GSK.
+This is utility script is provided for use with Databricks workspaces
 
