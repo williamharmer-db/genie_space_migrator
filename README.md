@@ -46,12 +46,12 @@ You can provide credentials in two ways:
 
 3. **Load the environment variables:**
    
-   **Method A - Export all at once (simple):**
+   **Method A - Export all at once (recommended, filters comments):**
    ```bash
-   export $(cat .env | xargs)
+   export $(grep -v '^#' .env | xargs)
    ```
    
-   **Method B - Source with automatic export (recommended):**
+   **Method B - Source with automatic export:**
    ```bash
    set -a; source .env; set +a
    ```
