@@ -1,0 +1,9 @@
+{
+  "dev_catalog.dev_schema.customers": "prod_catalog.prod_schema.customers",
+  "dev_catalog.dev_schema.orders": "prod_catalog.prod_schema.orders",
+  "dev_catalog.dev_schema.products": "prod_catalog.prod_schema.products",
+  "dev-warehouse": "prod-warehouse",
+  "dev_environment": "prod_environment",
+  "https://dev-workspace.cloud.databricks.com": "https://prod-workspace.cloud.databricks.com"
+}
+
