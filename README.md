@@ -3,7 +3,7 @@
 A Python utility to migrate Databricks Genie spaces between workspaces with support for transformation rules.
 
 > **⚠️ BETA API Notice**  
-> This script uses the [Databricks Genie REST API](https://docs.databricks.com/api/workspace/genie/), which is currently in **BETA**. The script makes direct REST API calls via the Databricks SDK's API client because the SDK does not yet natively support Genie methods. Native SDK support is expected to be added in future releases.
+> This script uses the [Databricks Genie REST GET/CREATE/UPDATE SPACE API](https://docs.databricks.com/api/workspace/genie/createspace), which is currently in **BETA**. The script makes direct REST API calls via the Databricks SDK's API client because the SDK does not yet natively support Genie methods. Native SDK support is expected to be added in future releases.
 
 ## Features
 
@@ -32,22 +32,46 @@ You can provide credentials in two ways:
 
 ### Option 1: Environment Variables (Recommended)
 
-Set environment variables in your shell:
+#### Using a `.env` file:
 
-```bash
-export DATABRICKS_SOURCE_HOST="https://workspace1.cloud.databricks.com"
-export DATABRICKS_SOURCE_TOKEN="dapi1234567890abcdef"
-export DATABRICKS_TARGET_HOST="https://workspace2.cloud.databricks.com"
-export DATABRICKS_TARGET_TOKEN="dapi0987654321fedcba"
-```
+1. **Copy the example file:**
+   ```bash
+   cp .env.example .env
+   ```
 
-Then run commands without specifying credentials:
+2. **Edit `.env` with your actual credentials:**
+   ```bash
+   nano .env  # or use your preferred editor
+   ```
 
-```bash
-python genie_space_migrator.py migrate \
-  --space-id 01ef5b1234567890 \
-  --warehouse-id abc123def456
-```
+3. **Load the environment variables:**
+   
+   **Method A - Export all at once (simple):**
+   ```bash
+   export $(cat .env | xargs)
+   ```
+   
+   **Method B - Source with automatic export (recommended):**
+   ```bash
+   set -a; source .env; set +a
+   ```
+   
+   **Method C - Manual export (most secure):**
+   ```bash
+   export DATABRICKS_SOURCE_HOST="https://workspace1.cloud.databricks.com"
+   export DATABRICKS_SOURCE_TOKEN="dapi1234567890abcdef"
+   export DATABRICKS_TARGET_HOST="https://workspace2.cloud.databricks.com"
+   export DATABRICKS_TARGET_TOKEN="dapi0987654321fedcba"
+   ```
+
+4. **Run commands without specifying credentials:**
+   ```bash
+   python genie_space_migrator.py migrate \
+     --space-id 01ef5b1234567890 \
+     --warehouse-id abc123def456
+   ```
+
+**Security Note:** The `.env` file is in `.gitignore` and will never be committed. Keep it secure!
 
 ### Option 2: Command-Line Arguments
 
@@ -280,5 +304,5 @@ This script uses the following Databricks Genie APIs:
 
 ## License
 
-This is a utility script for internal use with Databricks workspaces.
+This is utility script is provided for use with Databricks workspaces inside GSK.
 
