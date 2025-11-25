@@ -1,3 +1,12 @@
+# Databricks credentials - DO NOT COMMIT
+.env
+.env.local
+.env.*.local
+set_env.sh
+
+# But DO commit the example
+!.env.example
+
 # Python
 __pycache__/
 *.py[cod]
